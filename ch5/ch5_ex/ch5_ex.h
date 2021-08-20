@@ -13,10 +13,10 @@ using namespace std;
 
 typedef string elemType;
 
-// 抽象基类Stack-->具象基类Stack
+// 抽象基类Stack --> 具象基类Stack
 class Stack {
 public:
-    Stack(int capacity = 0) : _top(0) {
+    explicit Stack(int capacity = 0) : _top(0) {
         if (capacity)
         {
             _stack.reserve(capacity);
@@ -187,7 +187,5 @@ void peek(Stack &st, int index) {
 // 测试函数
 //void ex5_1();
 void ex5_2();
-//void ex5_3();
-void ex5_4();
 
 #endif //CH5_CH5_EX_H

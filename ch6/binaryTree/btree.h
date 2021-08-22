@@ -242,7 +242,7 @@ class BinaryTree {
     friend ostream &operator<<(ostream &, const BinaryTree<elemType> &);
 public:
     BinaryTree();
-    BinaryTree(const vector<elemType> &);
+    explicit BinaryTree(const vector<elemType> &);
     BinaryTree(const BinaryTree &);
     ~BinaryTree();
     BinaryTree &operator=(const BinaryTree &);
@@ -294,7 +294,7 @@ inline BinaryTree<elemType>::
 BinaryTree() : _root(0) {}
 
 /**
- * constructor
+ * copy constructor
  * @tparam elemType 
  * @param rhs 
  */
@@ -360,7 +360,7 @@ insert(const elemType &elem) {
 }
 
 /**
- * 插值 - vector
+ * 插值 - vector<int>
  * @tparam elemType 
  * @param vec 
  */

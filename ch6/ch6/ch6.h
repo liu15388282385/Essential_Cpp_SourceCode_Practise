@@ -5,7 +5,10 @@
 #ifndef CH6_CH6_H
 #define CH6_CH6_H
 
-#include <iostream>
+#include <string>
+#include <fstream>
+
 using namespace std;
+
 
 #endif //CH6_CH6_H

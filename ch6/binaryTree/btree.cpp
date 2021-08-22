@@ -18,7 +18,7 @@ int main() {
 	vector< int > ivec( ia, ia + 14 );
 	BinaryTree<int> bt1( ivec );
 
-	log1 << "preorder traversal: \n";
+	log1 << "\npreorder traversal: \n";
     // cout << should see\n\t ";
 	bt1.preorder(log1);
 

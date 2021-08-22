@@ -265,7 +265,7 @@ public:
 
     ostream &print(ostream &os = *_current_os,
                    void (BinaryTree<elemType>::*traversal)(ostream &) const =
-                   &BinaryTree<elemType>::inorder) const;
+                   &BinaryTree<elemType>::preorder) const;
     
     static void current_os(ostream *os) {
         if (os)
@@ -461,7 +461,7 @@ print(ostream &os,
 template<typename elemType>
 inline ostream &operator<<(ostream &os, const BinaryTree<elemType> &bt) {
     os << "Tree: " << endl;
-    bt.print(os, &BinaryTree<elemType>::inorder);
+    bt.print(os, &BinaryTree<elemType>::preorder);
     return os;
 }
 

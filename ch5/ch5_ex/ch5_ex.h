@@ -17,8 +17,7 @@ typedef string elemType;
 class Stack {
 public:
     explicit Stack(int capacity = 0) : _top(0) {
-        if (capacity)
-        {
+        if (capacity) {
             _stack.reserve(capacity);
         }
     }

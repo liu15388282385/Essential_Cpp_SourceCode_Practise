@@ -9,4 +9,3 @@ add_executable(ch5_ex "ch5_ex/ch5_ex.cpp" "ch5_ex/ch5_ex.h")
 
 add_executable(ch5_hybrid "hybrid/hybrid.cpp" "hybrid/hybrid.h")
 
-add_executable(ch5_inher "inher/classes.cpp" "inher/classes.h")

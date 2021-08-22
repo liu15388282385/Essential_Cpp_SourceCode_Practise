@@ -76,5 +76,9 @@ int main() {
     log2 << "\n\npostorder traversal:\n";
     bt2.postorder(log2);
 
+    if (bt2.find("Chris")) {
+        log2 << "\n\nFound the Chris!\n";
+    }
+
     return 0;
 }

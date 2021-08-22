@@ -88,8 +88,8 @@ insert_value(const valType &val) {
         if (!_rchild) {
             _rchild = new BTnode(val);
             (*BinaryTree<valType>::os()) << "ok: BTnode::insert_value at right child( " << val << " )\n";
-        }
-        _rchild->insert_value(val);
+        } else 
+            _rchild->insert_value(val);
     }
 }
 

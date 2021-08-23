@@ -17,12 +17,11 @@ using namespace std;
 
 class num_sequence;
 
-ostream &operator<<(ostream &, num_sequence);
+ostream &operator<<(ostream &, num_sequence&);
 
 class num_sequence {
 public:
     typedef vector<unsigned int>::iterator iterator;
-
     typedef void (num_sequence::*PtrType)(int);
 
     enum ns_type {
@@ -267,7 +266,7 @@ private:
     int _length{};
     int _max_pos{};
 
-    static vector<vector<unsigned int>> seq;
+    static vector<vector<unsigned int> > seq;
 
     // static const int            cnt_seq = 7;
     enum {
@@ -377,7 +376,7 @@ int main() {
     return 0; // to quiet VC++
 }
 
-ostream &operator<<(ostream &os, num_sequence ns) {
+ostream &operator<<(ostream &os, num_sequence &ns) {
     ns.print(os);
     return os;
 }

@@ -5,9 +5,9 @@
 #ifndef CH4_CH4_H
 #define CH4_CH4_H
 
-#include <iostream>
 #include <string>
 #include <vector>
+#include <iostream>
 #include <algorithm>
 
 using namespace std;

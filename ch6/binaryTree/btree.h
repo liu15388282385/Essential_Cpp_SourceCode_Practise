@@ -88,7 +88,7 @@ insert_value(const valType &val) {
         if (!_rchild) {
             _rchild = new BTnode(val);
             (*BinaryTree<valType>::os()) << "ok: BTnode::insert_value at right child( " << val << " )\n";
-        } else 
+        } else
             _rchild->insert_value(val);
     }
 }
@@ -240,6 +240,7 @@ postorder(BTnode<valType> *pt, ostream &os) const {
 template<typename elemType>
 class BinaryTree {
     friend ostream &operator<<(ostream &, const BinaryTree<elemType> &);
+
 public:
     BinaryTree();
     explicit BinaryTree(const vector<elemType> &);
@@ -258,7 +259,7 @@ public:
             _root = 0;
         }
     } // 移除整个二叉树
-    
+
     void inorder(ostream &os = *_current_os) const { _root->inorder(_root, os); }
     void postorder(ostream &os = *_current_os) const { _root->postorder(_root, os); }
     void preorder(ostream &os = *_current_os) const { _root->preorder(_root, os); }
@@ -266,7 +267,6 @@ public:
     ostream &print(ostream &os = *_current_os,
                    void (BinaryTree<elemType>::*traversal)(ostream &) const =
                    &BinaryTree<elemType>::preorder) const;
-    
     static void current_os(ostream *os) {
         if (os)
             _current_os = os;
@@ -309,7 +309,7 @@ BinaryTree(const BinaryTree &rhs) {
  * @tparam elemType 
  * @param vec 
  */
-template <typename elemType>
+template<typename elemType>
 BinaryTree<elemType>::
 BinaryTree(const vector<elemType> &vec) {
     _root = 0;
@@ -364,7 +364,7 @@ insert(const elemType &elem) {
  * @tparam elemType 
  * @param vec 
  */
-template <typename elemType>
+template<typename elemType>
 void BinaryTree<elemType>::
 insert(const vector<elemType> &vec) {
     for (int ix = 0; ix < vec.size(); ++ix)

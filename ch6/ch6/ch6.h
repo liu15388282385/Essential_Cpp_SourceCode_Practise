@@ -10,5 +10,4 @@
 
 using namespace std;
 
-
 #endif //CH6_CH6_H

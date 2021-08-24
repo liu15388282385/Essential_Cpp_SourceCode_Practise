@@ -16,7 +16,7 @@ using namespace std;
 
 typedef unsigned int unit; // 统一使用unsigned int类型
 
-// class template num_sequence 的前置声明 
+// class template num_sequence 的前置声明
 template<typename seq_type>
 class num_sequence;
 

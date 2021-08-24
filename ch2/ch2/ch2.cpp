@@ -4,8 +4,7 @@
 
 #include "ch2.h"
 
-int main()
-{
+int main() {
 
     int change;
 
@@ -16,10 +15,8 @@ int main()
     cout << "输入你的选择，进入不同函数执行选择: \n";
     cin >> change;
 
-    switch (change)
-    {
-    case 1:
-    {
+    switch (change) {
+    case 1: {
         //冒泡排序，过程记录到文件中
         ofstream ofil("data.txt");
 
@@ -29,8 +26,7 @@ int main()
         Bubble_sort(vec, &ofil);
     }
     break;
-    case 2:
-    {
+    case 2: {
         //斐波那契数列
         int elem, pos;
         bool more = true;
@@ -60,8 +56,7 @@ int main()
  * @param vec
  * @param ofil
  */
-void Display(const vector<int> &vec, ofstream &ofil)
-{
+void Display(const vector<int> &vec, ofstream &ofil) {
     for (int ix : vec)
     {
         ofil << ix << ' ';
@@ -75,8 +70,7 @@ void Display(const vector<int> &vec, ofstream &ofil)
  * @param val2
  * @param ofil
  */
-void Swap(int &val1, int &val2, ofstream *ofil)
-{
+void Swap(int &val1, int &val2, ofstream *ofil) {
     if (ofil)
         (*ofil) << "swap( " << val1
                 << ", " << val2 << " )\n";
@@ -93,14 +87,10 @@ void Swap(int &val1, int &val2, ofstream *ofil)
  * @param vec
  * @param ofil
  */
-void Bubble_sort(vector<int> &vec, ofstream *ofil)
-{
-    for (int ix = 0; ix < vec.size(); ++ix)
-    {
-        for (int jx = ix + 1; jx < vec.size(); ++jx)
-        {
-            if (vec[ix] > vec[jx])
-            {
+void Bubble_sort(vector<int> &vec, ofstream *ofil) {
+    for (int ix = 0; ix < vec.size(); ++ix) {
+        for (int jx = ix + 1; jx < vec.size(); ++jx) {
+            if (vec[ix] > vec[jx]) {
                 if (ofil != nullptr)
                     (*ofil) << "about to call swap! ix: " << ix
                             << " jx: " << jx << "\tswapping: "
@@ -118,8 +108,7 @@ void Bubble_sort(vector<int> &vec, ofstream *ofil)
  * @param size
  * @return
  */
-const vector<int> *Fibon_seq(int size)
-{
+const vector<int> *Fibon_seq(int size) {
     static vector<int> elems;
 
     if (!is_size_ok(size))
@@ -127,8 +116,7 @@ const vector<int> *Fibon_seq(int size)
 
     //如果size等于或小于elems.size(),
     //就不必重新计算了
-    for (unsigned int ix = elems.size(); ix < size; ++ix)
-    {
+    for (unsigned int ix = elems.size(); ix < size; ++ix) {
         if (ix == 0 || ix == 1)
             elems.push_back(1);
         else
@@ -144,8 +132,7 @@ const vector<int> *Fibon_seq(int size)
  * @param elem
  * @return
  */
-inline bool Fibon_elem(int pos, int &elem)
-{
+inline bool Fibon_elem(int pos, int &elem) {
     const vector<int> *pseq = Fibon_seq(pos);
 
     if (!pseq)
@@ -163,16 +150,14 @@ inline bool Fibon_elem(int pos, int &elem)
 }
 
 bool Seq_elem(int pos, int &elem,
-              const vector<int> *(*seq_ptr)(int))
-{
+              const vector<int> *(*seq_ptr)(int)) {
     if (!seq_ptr)
         Display_message("Internal Error: seq_ptr is set to null!");
 
     //调用seq_ptr所指的函数
     const vector<int> *pseq = seq_ptr(pos);
 
-    if (!pseq)
-    {
+    if (!pseq) {
         elem = 0;
         return false;
     }
@@ -186,13 +171,11 @@ bool Seq_elem(int pos, int &elem,
  * @param size
  * @return
  */
-inline bool is_size_ok(int size)
-{
+inline bool is_size_ok(int size) {
     const int max_size = 1024;
     const string msg("Request size is not supported");
 
-    if (size <= 0 || size > max_size)
-    {
+    if (size <= 0 || size > max_size) {
         Display_message(msg);
         return false;
     }
@@ -203,8 +186,7 @@ inline bool is_size_ok(int size)
  * 打印错误信息
  * @param msg
  */
-inline void Display_message(const string &msg)
-{
+inline void Display_message(const string &msg) {
     cout << msg << endl;
 }
 
@@ -215,8 +197,7 @@ inline void Display_message(const string &msg)
  * @param vec
  */
 template <typename elemType>
-void Display_message(const string &msg, const vector<elemType> &vec)
-{
+void Display_message(const string &msg, const vector<elemType> &vec) {
     cout << msg << endl;
     for (int ix = 0; ix < vec.size(); ++ix)
     {

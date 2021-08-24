@@ -7,6 +7,6 @@ add_executable(ch6 "ch6/ch6.cpp" "ch6/ch6.h")
 
 add_executable(ch6_ex "ch6_ex/ch6_ex.cpp" "ch6_ex/ch6_ex.h")
 
-add_executable(btree "binaryTree/btree.cpp" "binaryTree/btree.h")
+add_executable(ch6_btree "binaryTree/btree.cpp" "binaryTree/btree.h")
 
-add_executable(s_main "strategy/s_main.cpp" "strategy/s_main.h")
+add_executable(ch6_strategy "strategy/s_main.cpp" "strategy/s_main.h")

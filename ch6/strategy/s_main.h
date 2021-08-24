@@ -48,8 +48,8 @@ public:
     iterator begin() const { return _pelems->begin() + _beg_pos -1; }
     iterator end() const { return _pelems->begin() + _beg_pos + _length; }
 
-    uint length() { return _length; }
-    uint beg_pos() { return _beg_pos; }
+    uint length() const { return _length; }
+    uint beg_pos() const { return _beg_pos; }
     
 protected:
     void gen_elems(uint pos) const { _ns.gen_elems(pos); }
@@ -69,6 +69,13 @@ ostream &operator<<(ostream &os, const num_sequence<seq_type> &ns) {
     return ns.print(os);
 }
 
+template<typename seq_type>
+num_sequence<seq_type>::
+num_sequence(uint len, uint beg_pos) : _pelems() {
+    set_position(beg_pos);
+    set_length(len);
+}
+
 // 重载==运算符
 template <typename seq_type>
 inline bool num_sequence<seq_type>::
@@ -83,6 +90,8 @@ inline bool num_sequence<seq_type>::
 operator!=(const num_sequence &rhs) const {
     return !(*this == rhs);
 }
+
+
 
 // 测试函数
 extern void prog1();

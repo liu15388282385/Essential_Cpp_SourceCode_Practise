@@ -73,7 +73,7 @@ ostream &operator<<(ostream &os, const num_sequence<seq_type> &ns) {
 template <typename seq_type>
 inline bool num_sequence<seq_type>::
 operator==(const num_sequence &rhs) const {
-    return (_beg_pos == rhs._beg_pos) 
+    return (_beg_pos == rhs._beg_pos)
         && (_length == rhs._length);
 }
 

@@ -14,6 +14,13 @@
 
 using namespace std;
 
+typedef unsigned int unit;
 
+
+
+// 测试函数
+extern void prog1();
+extern void prog2();
+extern void prog3();
 
 #endif //CH6_S_MAIN_H

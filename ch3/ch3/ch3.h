@@ -5,13 +5,13 @@
 #ifndef CH3_CH3_H
 #define CH3_CH3_H
 
-#include <iostream>
-#include <fstream>
 #include <vector>
 #include <string>
+#include <fstream>
+#include <iostream>
 #include <iterator>
-#include <functional>
 #include <algorithm>
+#include <functional>
 
 using namespace std;
 

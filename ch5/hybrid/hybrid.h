@@ -60,8 +60,8 @@ protected:
     bool check_integrity(int pos, unsigned int size) const;
     num_sequence(int, int, vector<unsigned int> &);
 
-    int _length{};  // 长度
-    int _beg_pos{}; // 起始位置
+    int _length;  // 长度
+    int _beg_pos; // 起始位置
     vector<unsigned int> &_relems; // 用于指向派生类中的某个static vector的引用(reference)
     // 之所以使用引用而不是用指针，是为了避免检查所指对象是否为null
 };

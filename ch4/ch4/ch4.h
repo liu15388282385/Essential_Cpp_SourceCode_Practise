@@ -259,25 +259,28 @@ inline const Triangular_iterator Triangular_iterator::operator++(int) {
 }
 
 //函数对象作用是比较小于等于的值;
+template<typename elemType>
 class LessThan {
 public:
-    explicit LessThan(int val) : _val(val) {}
+    explicit LessThan(elemType val) : _val(val) {}
 
-    int comp_val() const { return _val; }  // 基值的读取
-    void comp_val(int val) { _val = val; } // 基值的写入
+    elemType comp_val() const { return _val; }  // 基值的读取
+    void comp_val(elemType val) { _val = val; } // 基值的写入
 
-    bool operator()(int _value) const;
+    bool operator()(elemType _value) const;
 
 private:
-    int _val;
+    elemType _val;
 };
 
-inline bool LessThan::operator()(int _value) const {
+template<typename elemType>
+inline bool LessThan<elemType>::operator()( elemType _value) const {
     return _value < _val;
 }
 
-int count_less_than(const vector<int> &vec, int comp) {
-    LessThan lt(comp);
+template<typename elemType>
+int count_less_than(const vector<elemType> &vec, int comp) {
+    LessThan<elemType> lt(comp);
 
     int count = 0;
     for (int ix : vec)
@@ -287,8 +290,9 @@ int count_less_than(const vector<int> &vec, int comp) {
     return count;
 }
 
-void print_less_than(const vector<int>&vec, int comp, ostream &os = cout) {
-    LessThan lt(comp);
+template<typename elemType>
+void print_less_than(const vector<elemType>&vec, int comp, ostream &os = cout) {
+    LessThan<elemType> lt(comp);
     auto iter = vec.begin();
     auto it_end = vec.end();
     

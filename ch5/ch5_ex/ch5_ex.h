@@ -52,7 +52,8 @@ ostream &operator<<(ostream &os, const Stack &rhs) {
     return os;
 }
 
-inline bool Stack::pop(elemType &elem) {
+inline bool Stack::
+pop(elemType &elem) {
     if (empty())
             return false;
     elem = _stack[--_top];
@@ -60,7 +61,8 @@ inline bool Stack::pop(elemType &elem) {
     return true;
 }
 
-inline bool Stack::push(const elemType &elem) {
+inline bool Stack::
+push(const elemType &elem) {
     if (!full()) {
         _stack.push_back(elem);
         ++_top;
@@ -69,7 +71,8 @@ inline bool Stack::push(const elemType &elem) {
     return false;
 }
 
-inline void Stack::print(ostream &os) const {
+inline void Stack::
+print(ostream &os) const {
     auto rit = _stack.rbegin(),
     rend = _stack.rend();
     os <<"\n\t";
@@ -163,7 +166,8 @@ public:
     
 };
 
-inline bool PeekBack_Stack::peek(int index, elemType &elem) {
+inline bool PeekBack_Stack::
+peek(int index, elemType &elem) {
     if (empty())
         return false;
 

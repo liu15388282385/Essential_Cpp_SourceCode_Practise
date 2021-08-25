@@ -56,7 +56,7 @@ protected:
     };
 
     virtual void gen_elems(unsigned int pos) const = 0;
-    int _calc_pos(unsigned int elem) const;
+    int calc_pos(unsigned int elem) const;
     bool check_integrity(int pos, unsigned int size) const;
     num_sequence(int, int, vector<unsigned int> &);
 
@@ -70,16 +70,19 @@ ostream &operator<<(ostream &os, const num_sequence &ns) {
     return ns.print(os);
 }
 
-inline bool num_sequence::operator==(const num_sequence &rhs) const {
+inline bool num_sequence::
+operator==(const num_sequence &rhs) const {
     return (_beg_pos == rhs._beg_pos) &&
            (_length == rhs._length);
 }
 
-inline bool num_sequence::operator!=(const num_sequence &rhs) const {
+inline bool num_sequence::
+operator!=(const num_sequence &rhs) const {
     return !(*this == rhs);
 }
 
-inline void num_sequence::set_position(int pos) {
+inline void num_sequence::
+set_position(int pos) {
     if (pos <= 0 || pos > _max_elems) {
         cerr << "!! invalid position: " << pos
              << " setting pos to default value of 1\n"
@@ -89,7 +92,8 @@ inline void num_sequence::set_position(int pos) {
     _beg_pos = pos;
 }
 
-inline void num_sequence::set_length(int len) {
+inline void num_sequence::
+set_length(int len) {
     if (len <= 0 || len + _beg_pos - 1 > _max_elems) {
         cerr << "!! invalid length for this object: " << len
              << " setting length to default value of 1\n"
@@ -99,13 +103,15 @@ inline void num_sequence::set_length(int len) {
     _length = len;
 }
 
-inline num_sequence::num_sequence(int beg_pos, int len, 
-                                  vector<unsigned int> &re) : _relems(re) {
+inline num_sequence::
+num_sequence(int beg_pos, int len, 
+             vector<unsigned int> &re) : _relems(re) {
     set_position(beg_pos);
     set_length(len);
 }
 
-inline unsigned int num_sequence::elem(int pos) const {
+inline unsigned int num_sequence::
+elem(int pos) const {
     return (!check_integrity(pos, _relems.size()))
            ? 0
            : _relems[pos - 1];
@@ -113,11 +119,13 @@ inline unsigned int num_sequence::elem(int pos) const {
 
 #include <typeinfo>
 
-inline const char *num_sequence::what_am_i() const {
+inline const char *num_sequence::
+what_am_i() const {
     return typeid(*this).name();
 }
 
-inline bool num_sequence::check_integrity(int pos, unsigned int size) const {
+inline bool num_sequence::
+check_integrity(int pos, unsigned int size) const {
     bool status = true;
 
     if (pos <= 0 || pos > _max_elems) {
@@ -147,7 +155,8 @@ inline bool num_sequence::is_elem(unsigned int elem) const {
 // base class non-inline implementations
 // normally would go in a program text file: .cpp
 
-ostream &num_sequence::print(ostream &os) const {
+ostream &num_sequence::
+print(ostream &os) const {
 
     int elem_pos = _beg_pos - 1;
     int end_pos = elem_pos + _length;
@@ -175,11 +184,12 @@ ostream &num_sequence::print(ostream &os) const {
 //     Obj.pos_elem( very-large-instance ); // your choice
 //     Obj.pos_elem( 4 ); // return 0
 
-int num_sequence::pos_elem(unsigned int elem) const {
+int num_sequence::
+pos_elem(unsigned int elem) const {
     cout << "pos_elem( " << elem << " )\n";
 
     if (_relems[_relems.size() - 1] < elem)
-        return _calc_pos(elem);
+        return calc_pos(elem);
 
     auto iter = find(_relems.begin(), _relems.end(), elem);
     return (iter == _relems.end())
@@ -187,7 +197,8 @@ int num_sequence::pos_elem(unsigned int elem) const {
            : distance(_relems.begin(), iter) + 1;
 }
 
-int num_sequence::_calc_pos(unsigned int elem) const {
+int num_sequence::
+calc_pos(unsigned int elem) const {
     // presumption is that check_integrity() has passed
     unsigned int pos = _relems.size() - 1;
 
@@ -319,7 +330,8 @@ vector<unsigned int> Triangular::_elems;
 vector<unsigned int> Square::_elems;
 vector<unsigned int> Pentagonal::_elems;
 
-void Fibonacci::gen_elems(unsigned int pos) const {
+void Fibonacci::
+gen_elems(unsigned int pos) const {
     if (pos <= 0 || pos > max_elems())
         return;
 
@@ -344,7 +356,8 @@ void Fibonacci::gen_elems(unsigned int pos) const {
     }
 }
 
-void Pell::gen_elems(unsigned int pos) const {
+void Pell::
+gen_elems(unsigned int pos) const {
     if (pos <= 0 || pos > max_elems())
         return;
 
@@ -368,7 +381,8 @@ void Pell::gen_elems(unsigned int pos) const {
     }
 }
 
-void Lucas::gen_elems(unsigned int pos) const {
+void Lucas::
+gen_elems(unsigned int pos) const {
     if (pos <= 0 || pos > max_elems())
         return;
 
@@ -392,7 +406,8 @@ void Lucas::gen_elems(unsigned int pos) const {
     }
 }
 
-void Triangular::gen_elems(unsigned int pos) const {
+void Triangular::
+gen_elems(unsigned int pos) const {
     if (pos <= 0 || pos > max_elems())
         return;
 
@@ -405,7 +420,8 @@ void Triangular::gen_elems(unsigned int pos) const {
     }
 }
 
-void Square::gen_elems(unsigned int pos) const {
+void Square::
+gen_elems(unsigned int pos) const {
     if (pos <= 0 || pos > max_elems())
         return;
 
@@ -417,7 +433,8 @@ void Square::gen_elems(unsigned int pos) const {
     }
 }
 
-void Pentagonal::gen_elems(unsigned int pos) const {
+void Pentagonal::
+gen_elems(unsigned int pos) const {
     if (pos <= 0 || pos > max_elems())
         return;
 

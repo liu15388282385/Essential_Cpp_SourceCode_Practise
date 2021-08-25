@@ -14,9 +14,9 @@ using namespace std;
 
 //class intBuffer {
 //public:
-//    // ...
+   // ...
 //private:
-//    // static const int _buf_size = 1024; // ok but not with VC++
+   // static const int _buf_size = 1024; // ok but not with VC++
 //    enum {
 //        _buf_size = 1024
 //    };
@@ -279,7 +279,7 @@ inline bool LessThan<elemType>::operator()( elemType _value) const {
 }
 
 template<typename elemType>
-int count_less_than(const vector<elemType> &vec, int comp) {
+int count_less_than(const vector<elemType> &vec, elemType comp) {
     LessThan<elemType> lt(comp);
 
     int count = 0;

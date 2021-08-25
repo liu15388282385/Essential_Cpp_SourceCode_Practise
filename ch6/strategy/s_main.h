@@ -37,8 +37,8 @@ public:
     static uint max_elems() { return _max_elems; }
     ostream &print(ostream &os = cout) const;
 
-    void set_position(int pos);
-    void set_length(int pos);
+    void set_position(uint pos);
+    void set_length(uint len);
 
     bool operator==(const num_sequence &) const;
     bool operator!=(const num_sequence &) const;
@@ -91,7 +91,75 @@ operator!=(const num_sequence &rhs) const {
     return !(*this == rhs);
 }
 
+// 设置position
+template <typename seq_type>
+inline void num_sequence<seq_type>::
+set_position(uint pos) {
+    if (pos <= 0 || pos > _max_elems) {
+		cerr << "!! invalid position: " << pos
+			 << " setting pos to default value of 1\n"
+			 << "If inadequate, invoke set_position(pos)\n";
+		pos = 1;
+	}
+    _beg_pos = pos;
+}
 
+// 设置length
+template <typename seq_type>
+inline void num_sequence<seq_type>::
+set_length(uint len) {
+    if (len <= 0 || len + _beg_pos - 1 > _max_elems) {
+		cerr << "!! invalid length for this object: " << len
+			 << " setting length to default value of 1\n"
+			 << "If inadequate, invoke set_length(len)\n";
+		len = 1;
+	}
+    _length = len;
+}
+
+// 查值
+template <typename seq_type>
+inline uint num_sequence<seq_type>::
+elem(uint pos) const {
+    return (check_integrity(pos, _pelems->size()))
+            ? 0
+            : (*_pelems)[pos - 1];
+}
+
+// 检查是否合法
+template <typename seq_type>
+inline bool num_sequence<seq_type>::
+check_integrity (unit pos, unit size) const {
+    if (pos <= 0 || pos > max_elems()) {
+		cerr << "!! invalid position: " << pos
+			 << " Cannot honor request\n";
+		return false;
+	}
+
+	if (pos > size)
+		gen_elems(pos);
+
+	return true;
+}
+
+// 打印元素
+template <typename seq_type>
+inline ostream &num_sequence<seq_type>::
+print(ostream &os) const {
+    uint elem_pos = _beg_pos - 1;
+    uint end_pos = elem_pos + _length;
+
+    if (!check_integrity(end_pos, _pelems->size()))
+        return os;
+
+    os << "("<< _beg_pos <<", "<< _length <<")";
+
+    while (elem_pos < end_pos)
+        os << *_pelems[elem_pos++] << " ";
+    os << endl;
+
+    return os;  
+}
 
 // 测试函数
 extern void prog1();

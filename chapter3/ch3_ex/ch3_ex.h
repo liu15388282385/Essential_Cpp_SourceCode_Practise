@@ -5,15 +5,15 @@
 #ifndef CH3_CH3_EX_H
 #define CH3_CH3_EX_H
 
-#include <iostream>
-#include <functional>
-#include <algorithm>
+#include <set>
+#include <map>
+#include <string>
+#include <vector>
 #include <fstream>
 #include <iterator>
-#include <vector>
-#include <string>
-#include <map>
-#include <set>
+#include <iostream>
+#include <algorithm>
+#include <functional>
 
 using namespace std;
 

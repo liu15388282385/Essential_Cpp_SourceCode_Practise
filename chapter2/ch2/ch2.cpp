@@ -8,11 +8,12 @@ int main() {
 
     int change;
 
-    cout << "选择数\t函数\n"
+    cout << BLUE
+         << "选择数\t函数\n"
          << "1    \tBubble_sort()\n"
          << "2    \tFibon_elem()\n"
          << endl;
-    cout << "输入你的选择，进入不同函数执行选择: \n";
+    cout << "输入你的选择，进入不同函数执行选择: \n" << RESET;
     cin >> change;
 
     switch (change) {
@@ -31,15 +32,14 @@ int main() {
         int elem, pos;
         bool more = true;
         char ch;
-        while (more)
-        {
-            cout << "请输入你想知道对应位置的元素值: ";
+        while (more) {
+            cout << BLUE << "请输入你想知道对应位置的元素值: " << RESET;
             cin >> pos;
 
             if (Fibon_elem(pos, elem))
                 cout << "  " << elem << endl;
 
-            cout << "想再试一次吗? (Y/N)";
+            cout << BLUE << "想再试一次吗? (Y/N)" << RESET;
             cin >> ch;
             if (ch == 'N' || ch == 'n')
                 more = false;
@@ -57,8 +57,7 @@ int main() {
  * @param ofil
  */
 void Display(const vector<int> &vec, ofstream &ofil) {
-    for (int ix : vec)
-    {
+    for (int ix : vec) {
         ofil << ix << ' ';
     }
     ofil << endl;
@@ -135,8 +134,7 @@ const vector<int> *Fibon_seq(int size) {
 inline bool Fibon_elem(int pos, int &elem) {
     const vector<int> *pseq = Fibon_seq(pos);
 
-    if (!pseq)
-    {
+    if (!pseq) {
         elem = 0;
         return false;
     }
@@ -187,7 +185,7 @@ inline bool is_size_ok(int size) {
  * @param msg
  */
 inline void Display_message(const string &msg) {
-    cout << msg << endl;
+    cout << GREEN << msg << endl << RESET;
 }
 
 /**
@@ -199,10 +197,9 @@ inline void Display_message(const string &msg) {
 template <typename elemType>
 void Display_message(const string &msg, const vector<elemType> &vec) {
     cout << msg << endl;
-    for (int ix = 0; ix < vec.size(); ++ix)
-    {
+    for (int ix = 0; ix < vec.size(); ++ix) {
         elemType t = vec[ix];
-        cout << t << ' ';
+        cout << GREEN << t << ' ';
     }
-    cout << endl;
+    cout << endl << RESET;
 }

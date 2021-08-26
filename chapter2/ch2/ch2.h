@@ -12,6 +12,12 @@
 
 using namespace std;
 
+//定义cout字体颜色
+#define RESET  "\033[0m"  /* Reset  */
+#define GREEN  "\033[32m" /* Green  */
+#define YELLOW "\033[33m" /* Yellow */
+#define BLUE   "\033[34m" /* Blue   */
+
 //冒泡排序
 void Display(const vector<int> &vec, ofstream &ofil);
 void Swap(int &val1, int &val2, ofstream *ofil = nullptr);

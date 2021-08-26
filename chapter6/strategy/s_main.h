@@ -27,7 +27,7 @@ template<typename seq_type>
 class num_sequence {
 public:
     typedef vector<uint>::iterator iterator;
-    num_sequence(unit beg_pos = 1, uint len = 1);
+    explicit num_sequence(unit beg_pos = 1, uint len = 1);
 
     unit elem(uint pos) const;
     bool is_elem(uint elem) const;
@@ -173,9 +173,7 @@ print(ostream &os) const {
 template <typename seq_type>
 inline bool num_sequence<seq_type>::
 is_elem(uint elem) const {
-    return (!check_integrity(_beg_pos, _length))
-           ? false
-           : binary_search(begin(), end(), elem);
+    return check_integrity(_beg_pos, _length) && binary_search(begin(), end(), elem);
 }
 
 // pos_elem() returns the position of an element within the sequence
@@ -318,11 +316,11 @@ gen_elems(uint pos) const {
 	}
 
 	if (_elems.size() <= pos) {
-		int ix = _elems.size();
-		int n_2 = _elems[ix - 2],
+		uint ix = _elems.size();
+		uint n_2 = _elems[ix - 2],
 			n_1 = _elems[ix - 1];
 
-		int elem;
+		uint elem;
 		for (; ix <= pos; ++ix) {
 			elem = n_2 + n_1;
 			// cout << "gen_elems: " << elem << endl;
@@ -345,11 +343,11 @@ gen_elems(uint pos) const {
 	}
 
 	if (_elems.size() <= pos) {
-		int ix = _elems.size();
-		int n_2 = _elems[ix - 2],
+		uint ix = _elems.size();
+		uint n_2 = _elems[ix - 2],
 			n_1 = _elems[ix - 1];
 
-		int elem;
+		uint elem;
 		for (; ix <= pos; ++ix) {
 			elem = n_2 + 2 * n_1;
 			_elems.push_back(elem);
@@ -371,11 +369,11 @@ gen_elems(uint pos) const {
 	}
 
 	if (_elems.size() <= pos) {
-		int ix = _elems.size();
-		int n_2 = _elems[ix - 2],
+		uint ix = _elems.size();
+		uint n_2 = _elems[ix - 2],
 			n_1 = _elems[ix - 1];
 
-		int elem;
+		uint elem;
 		for (; ix <= pos; ++ix) {
 			elem = n_2 + n_1;
 			_elems.push_back(elem);
@@ -392,8 +390,8 @@ gen_elems(uint pos) const {
 		return;
 
 	if (_elems.size() <= pos) {
-		int end_pos = pos + 1;
-		int ix = _elems.size() + 1;
+		uint end_pos = pos + 1;
+		uint ix = _elems.size() + 1;
 
 		for (; ix <= end_pos; ++ix)
 			_elems.push_back(ix * (ix + 1) / 2);
@@ -407,8 +405,8 @@ gen_elems(uint pos) const {
 		return;
 
 	if (_elems.size() <= pos) {
-		int end_pos = pos + 1;
-		int ix = _elems.size() + 1;
+		uint end_pos = pos + 1;
+		uint ix = _elems.size() + 1;
 		for (; ix <= end_pos; ++ix)
 			_elems.push_back(ix * ix);
 	}
@@ -421,8 +419,8 @@ gen_elems(uint pos) const {
 		return;
 
 	if (_elems.size() <= pos) {
-		int end_pos = pos + 1;
-		int ix = _elems.size() + 1;
+		uint end_pos = pos + 1;
+		uint ix = _elems.size() + 1;
 		for (; ix <= end_pos; ++ix)
 			_elems.push_back(ix * (3 * ix - 1) / 2);
 	}

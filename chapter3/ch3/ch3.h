@@ -35,7 +35,6 @@ static vector<string> svec(sa, sa + string_size); /* NOLINT */
 #define YELLOW "\033[33m" /* Yellow */
 #define BLUE   "\033[34m" /* Blue */
 
-
 //各版本find_ver函数
 const int *find_ver1(const vector<int> &vec, int value);
 

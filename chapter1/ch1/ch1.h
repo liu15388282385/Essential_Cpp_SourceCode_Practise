@@ -6,17 +6,22 @@
 #define CH1_CH1_H
 
 #include <vector>
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
 using namespace std;
+
+//定义cout字体颜色
+#define RESET  "\033[0m"  /* Reset  */
+#define GREEN  "\033[32m" /* Green  */
+#define YELLOW "\033[33m" /* Yellow */
+#define BLUE   "\033[34m" /* Blue   */
 
 // external type definitions
 typedef const vector<unsigned int> *(*pfunc)(int); //声明一个函数指针指向返回值为const vector<unsigned>* 参数列表为int的函数;
 typedef const vector<unsigned int> *pvec;          //声明一个指向const vector<unsigned>对象的指针;
 
-enum num_sequence
-{
+enum num_sequence {
     ns_unk,
     ns_fib,
     ns_pell,
@@ -28,8 +33,7 @@ enum num_sequence
     ns_wrong_msg = 4
 };
 
-struct user_profile
-{
+struct user_profile {
     string name; //玩家名字;
     int guesses; //玩家猜测次数;
     int correct; //玩家猜测正确次数;
@@ -72,8 +76,7 @@ inline pvec seq_vec(user_profile *pu) { return pu->cur_seq_vec; }          //获
  * @param puser
  * @return
  */
-__attribute__((unused)) inline string user_name(user_profile *puser)
-{
+inline string user_name(user_profile *puser) {
     return puser->name;
 }
 
@@ -82,8 +85,7 @@ __attribute__((unused)) inline string user_name(user_profile *puser)
  * @param puser
  * @return
  */
-__attribute__((unused)) inline num_sequence seq(user_profile *puser)
-{
+inline num_sequence seq(user_profile *puser) {
     return puser->cur_seq;
 }
 
@@ -91,8 +93,7 @@ __attribute__((unused)) inline num_sequence seq(user_profile *puser)
  * 递增猜测次数;
  * @param puser
  */
-inline void bump_guess(user_profile *puser)
-{
+inline void bump_guess(user_profile *puser) {
     ++puser->guesses;
 }
 
@@ -100,8 +101,7 @@ inline void bump_guess(user_profile *puser)
  * 递增猜测次数和猜测正确次数;
  * @param puser
  */
-inline void bump_correct(user_profile *puser)
-{
+inline void bump_correct(user_profile *puser) {
     bump_guess(puser);
     ++puser->correct;
 }
@@ -112,8 +112,7 @@ inline void bump_correct(user_profile *puser)
  * @param ui
  * @return
  */
-inline num_sequence gen_seq_id()
-{
+inline num_sequence gen_seq_id() {
     srand(time(nullptr));
     return static_cast<num_sequence>(rand() % ns_cnt + 1);
 }
@@ -124,8 +123,7 @@ inline num_sequence gen_seq_id()
  * @param msg
  * @param data
  */
-inline void trace(const string &where, const string &msg, const string &data)
-{
+inline void trace(const string &where, const string &msg, const string &data) {
     cerr << where << " " << msg << " " << data << endl;
 }
 
@@ -134,8 +132,7 @@ inline void trace(const string &where, const string &msg, const string &data)
  * @param msg
  * @param val
  */
-inline void trace(const string &where, const string &msg, int val)
-{
+inline void trace(const string &where, const string &msg, int val) {
     cerr << where << " " << msg << " " << val << endl;
 }
 
@@ -145,8 +142,7 @@ inline void trace(const string &where, const string &msg, int val)
  * @param val
  * @param val2
  */
-inline void trace(const string &where, const string &msg, int val, int val2)
-{
+inline void trace(const string &where, const string &msg, int val, int val2) {
     cerr << where << " " << msg << " " << val << ' ' << val2 << endl;
 }
 
@@ -155,8 +151,7 @@ inline void trace(const string &where, const string &msg, int val, int val2)
  * @param val1
  * @param val2
  */
-__attribute__((unused)) inline void trace(const string &where, int val1, int val2)
-{
+inline void trace(const string &where, int val1, int val2) {
     cerr << where << " " << val1 << " " << val2 << endl;
 }
 
@@ -165,8 +160,7 @@ __attribute__((unused)) inline void trace(const string &where, int val1, int val
  * @param pos
  * @return
  */
-inline bool check_integrity(int pos)
-{
+inline bool check_integrity(int pos) {
     const int max_elems = 512;
 
     if (pos <= 0 || pos > max_elems)
@@ -184,8 +178,7 @@ inline bool check_integrity(int pos)
  * @param id
  * @return
  */
-__attribute__((unused)) inline num_sequence check_sequence(int id)
-{
+inline num_sequence check_sequence(int id) {
     if (id <= 0 || id > ns_cnt)
     {
         cerr << "!! invalid sequence value: " << id

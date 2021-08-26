@@ -5,12 +5,12 @@
 #ifndef CH4_CH4_EX_H
 #define CH4_CH4_EX_H
 
-#include <iostream>
-#include <algorithm>
+#include <map>
+#include <vector>
 #include <string>
 #include <utility>
-#include <vector>
-#include <map>
+#include <iostream>
+#include <algorithm>
 
 #include "../stack.h"
 

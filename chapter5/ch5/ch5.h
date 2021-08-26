@@ -5,23 +5,29 @@
 #ifndef CH5_CH5_H
 #define CH5_CH5_H
 
-#include <iostream>
 #include <string>
 #include <utility>
+#include <iostream>
 
 using namespace std;
+
+//定义cout字体颜色
+#define RESET  "\033[0m"  /* Reset  */
+#define GREEN  "\033[32m" /* Green  */
+#define YELLOW "\033[33m" /* Yellow */
+#define BLUE   "\033[34m" /* Blue   */
 
 // 顶层抽象基类
 class LibMat {
 public:
     LibMat() {
-        cout << "LibMat::LibMat() default constructor!\n";
+        cout << GREEN << "LibMat::LibMat() default constructor!\n" << RESET;
     }
     virtual ~LibMat() {
-        cout << "LibMat::~LibMat() destructor!\n";
+        cout << GREEN << "LibMat::~LibMat() destructor!\n" << RESET;
     }
     virtual void print() const {
-        cout << "LibMat::print() -- I am a LibMat object!\n";
+        cout << GREEN << "LibMat::print() -- I am a LibMat object!\n" << RESET;
     }
 };
 
@@ -29,16 +35,16 @@ public:
 class Book : public LibMat {
 public:
     Book(string title, string author) : _title(move(title)), _author(move(author)) {
-        cout << "Book::Book(" << _title;
-        cout << ", " << _author << ")  constructor\n";
+        cout << BLUE << "Book::Book(" << GREEN << _title;
+        cout << BLUE << ", " << GREEN << _author << BLUE << ")  constructor\n" << RESET;
     }
     ~Book() override  {
-        cout << "Book::~Book() destructor!\n";
+        cout << BLUE << "Book::~Book() destructor!\n" << RESET;
     }
     void print() const override { // 重写父类方法
-        cout << "Book::print() -- I am a Book object!\n";
-        cout << "My title is: " << _title << '\n';
-        cout << "My author is: " << _author << endl;
+        cout << BLUE << "Book::print() -- I am a Book object!\n" << RESET;
+        cout << BLUE << "My title is: " << GREEN << _title << '\n' << RESET;
+        cout << BLUE << "My author is: " << GREEN << _author << endl << RESET;
     }
     
     const string &title() const {
@@ -58,19 +64,19 @@ class AudioBook : public Book {
 public:
     AudioBook(string title, string author, string narrator) 
             : Book(move(title), move(author)), _narrator(move(narrator)){
-        cout << "AudioBook::AudioBook(" << _title;
-        cout << ", " << _author;
-        cout << ", " << _narrator;
-        cout << ")  constructor\n";
+        cout << BLUE << "AudioBook::AudioBook(" << GREEN << _title;
+        cout << BLUE << ", " << GREEN << _author;
+        cout << BLUE << ", " << GREEN << _narrator;
+        cout << BLUE << ")  constructor\n" << RESET;
     }
     ~AudioBook() override {
-        cout << "AudioBook::~AudioBook() destructor!\n";
+        cout << BLUE << "AudioBook::~AudioBook() destructor!\n";
     }
     void print() const override { // 重写父类方法
-        cout << "AudioBook::print() -- I am a AudioBook object!\n";
-        cout << "My title is: " << _title << '\n';
-        cout << "My author is: " << _author << '\n';
-        cout << "My narrator is: " << _narrator << endl;
+        cout << BLUE << "AudioBook::print() -- I am a AudioBook object!\n";
+        cout << BLUE << "My title is: " << GREEN << _title << '\n';
+        cout << BLUE << "My author is: " << GREEN << _author << '\n';
+        cout << BLUE << "My narrator is: " << GREEN << _narrator << endl << RESET;
     }
     
     const string &narrator() const {
@@ -85,17 +91,17 @@ protected:
 class Magazine : public LibMat {
 public:
     explicit Magazine(string periodical) : _periodical(std::move(periodical)) {
-        cout << "Magazine::Magazine("
-             << _periodical
-             << ") constructor\n";
+        cout << BLUE<< "Magazine::Magazine("
+             << GREEN << _periodical
+             << BLUE << ") constructor\n" << RESET;
     }
     ~Magazine() override {
-        cout << "Magazine:~Magazine "
-             << " destructor\n";
+        cout << BLUE << "Magazine:~Magazine "
+             << " destructor\n" << RESET;
     }
     void print() const override {
-        cout << "Magazine::print() -- I am a Magazine object!\n";
-        cout << "My periodical is: " << _periodical << endl;
+        cout << BLUE << "Magazine::print() -- I am a Magazine object!\n";
+        cout << "My periodical is: " << GREEN << _periodical << endl << RESET;
     }
     
     const string &periodical() const {
@@ -108,7 +114,7 @@ protected:
 
 // non-member-function
 void print(const LibMat &mat) {
-    cout << "in global print(): about to print mat.print()\n";
+    cout << BLUE << "in global print(): about to print mat.print()\n";
     mat.print();
 }
 

@@ -92,8 +92,8 @@ public:
     Matrix &operator=(const Matrix &);  // copy assignment operator
     ~Matrix() { delete[] _matrix; };    // destructor
 
-    Matrix<elemType> operator+(const Matrix &);
-    Matrix<elemType> operator*(const Matrix &);
+    Matrix operator+(const Matrix &);
+    Matrix operator*(const Matrix &);
     void operator+=(const Matrix &);
 
     uint rows() const { return _rows; }
@@ -131,10 +131,10 @@ inline ostream &operator<<(ostream &os, const Matrix<elemType> &ns) {
 // 矩阵相加
 template<typename elemType>
 Matrix<elemType> Matrix<elemType>::
-operator+(const Matrix<elemType> &m) {
+operator+(const Matrix &m) {
     assert(same_size(m)); // 确定m1和m2的大小相同
 
-    Matrix<elemType> res(*this); // 通过copy constructor赋值
+    Matrix res(*this); // 通过copy constructor赋值
     res += m;
 
     return res;
@@ -143,10 +143,10 @@ operator+(const Matrix<elemType> &m) {
 // 矩阵相乘
 template<typename elemType>
 Matrix<elemType> Matrix<elemType>::
-operator*(const Matrix<elemType> &m) {
+operator*(const Matrix &m) {
     assert(comfortable(m)); // m1的列数(col)必须等于m2的行数(row)
 
-    Matrix<elemType> res(rows(), m.cols());
+    Matrix res(rows(), m.cols());
 
     for (uint i = 0; i < rows(); i++) {
         for (uint j = 0; j < cols(); j++) {

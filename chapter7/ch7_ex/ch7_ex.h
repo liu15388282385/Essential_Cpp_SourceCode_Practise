@@ -8,5 +8,6 @@
 #include <iostream>
 
 using namespace std;
+//todo: chapter_7 exercise
 
 #endif //CH7_CH7_EX_H

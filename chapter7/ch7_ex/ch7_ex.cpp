@@ -3,3 +3,7 @@
 //
 
 #include "ch7_ex.h"
+
+int main () {
+    return 0;
+}

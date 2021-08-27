@@ -92,9 +92,9 @@ public:
     Matrix &operator=(const Matrix &);  // copy assignment operator
     ~Matrix() { delete[] _matrix; };    // destructor
 
-    Matrix operator+(const Matrix &);
-    Matrix operator*(const Matrix &);
-    void operator+=(const Matrix &);
+    Matrix operator+(const Matrix &);   // 矩阵相加+
+    Matrix operator*(const Matrix &);   // 矩阵相乘*
+    Matrix operator+=(const Matrix &);  // 复合运算+=
 
     uint rows() const { return _rows; }
     uint cols() const { return _cols; }
@@ -161,13 +161,15 @@ operator*(const Matrix &m) {
 
 // 矩阵+=运算
 template<typename elemType>
-void Matrix<elemType>::
+Matrix<elemType> Matrix<elemType>::
 operator+=(const Matrix &m) {
     assert(same_size(m)); // 确定m1和m2的大小相同
     uint mat_size = cols() * rows();
 
     for (uint i = 0; i < mat_size; i++)
         (*(_matrix + i)) += (*(m._matrix + i));
+    
+    return *this;
 }
 
 // 打印矩阵

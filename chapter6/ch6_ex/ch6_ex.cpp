@@ -6,7 +6,7 @@
 
 int main() {
 
-     test_rotate();
+    test_rotate();
     ex6_2();
 
     return 0;

@@ -19,7 +19,7 @@ using namespace std;
 
 // external type definitions
 typedef const vector<unsigned int> *(*pfunc)(int); //声明一个函数指针指向返回值为const vector<unsigned>* 参数列表为int的函数;
-typedef const vector<unsigned int> *pvec;          //声明一个指向const vector<unsigned>对象的指针;
+typedef const vector<unsigned int> *pvec;          //声明一个指向const vector<unsigned int>对象的指针;
 
 enum num_sequence {
     ns_unk,
@@ -163,8 +163,7 @@ inline void trace(const string &where, int val1, int val2) {
 inline bool check_integrity(int pos) {
     const int max_elems = 512;
 
-    if (pos <= 0 || pos > max_elems)
-    {
+    if (pos <= 0 || pos > max_elems) {
         cerr << "!! invalid position: " << pos
              << " Cannot honor request\n";
         return false;
@@ -179,8 +178,7 @@ inline bool check_integrity(int pos) {
  * @return
  */
 inline num_sequence check_sequence(int id) {
-    if (id <= 0 || id > ns_cnt)
-    {
+    if (id <= 0 || id > ns_cnt) {
         cerr << "!! invalid sequence value: " << id
              << " Choosing one at random\n";
 

@@ -161,19 +161,22 @@ pvec Pentagonal_gen_elems(int pos) {
 }
 
 // 使用一个函数指针数组来访问在每个函数中产生的静态数列;
-pfunc gen_elems[] =
-    {nullptr,
-     Fibonacci_gen_elems,
-     Pell_gen_elems,
-     Lucas_gen_elems,
-     Triangular_gen_elems,
-     Square_gen_elems,
-     Pentagonal_gen_elems};
+pfunc gen_elems[] = {
+    nullptr,
+    Fibonacci_gen_elems,
+    Pell_gen_elems,
+    Lucas_gen_elems,
+    Triangular_gen_elems,
+    Square_gen_elems,
+    Pentagonal_gen_elems
+};
 
 // 生成数列的种类;
-const char *name_seq[] = {"Invalid Sequence",
-                          "Fibonacci", "Pell", "Lucas",
-                          "Triangular", "Square", "Pentagonal"};
+const char *name_seq[] = {
+    "Invalid Sequence",
+    "Fibonacci", "Pell", "Lucas",
+    "Triangular", "Square", "Pentagonal"
+};
 
 // 游戏等级;
 int level_size[] = {8, 32, 128, 512};
@@ -183,7 +186,8 @@ const char *wrong_msg[] = {
     "Oops! Nice guess but not quite it.",
     "Hmm. Sorry. Wrong again.",
     "Ah, this is harder than it looks, isn't it?",
-    "It must be getting pretty frustrating by now!"};
+    "It must be getting pretty frustrating by now!"
+};
 
 /**
  * 显示玩家在游戏中的猜测信息;
@@ -460,8 +464,7 @@ void play_game(user_profile *puser) {
 
                 if (usr_rsp == 'N' || usr_rsp == 'n')
                     go_for_it = false;
-                else
-                {
+                else {
                     ++num_tries;
                     cout << BLUE << "Your next guess? " << RESET;
                 }

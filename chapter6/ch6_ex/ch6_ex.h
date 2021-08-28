@@ -81,10 +81,10 @@ template<typename elemType>
 class Matrix {
 //    // 矩阵相加
 //    friend Matrix<elemType> 
-//    operator+(const Matrix<elemType> &, const Matrix<elemType> &);
+//    operator+(const Matrix<elemType> &m1, const Matrix<elemType> &m2);
 //    // 矩阵相乘
 //    friend Matrix<elemType> 
-//    operator*(const Matrix<elemType> &, const Matrix<elemType> &);
+//    operator*(const Matrix<elemType> &m1, const Matrix<elemType> &m2);
 
 public:
     Matrix(uint rows, uint cols);       // constructor
@@ -132,9 +132,9 @@ inline ostream &operator<<(ostream &os, const Matrix<elemType> &ns) {
 template<typename elemType>
 Matrix<elemType> Matrix<elemType>::
 operator+(const Matrix &m) {
-    assert(same_size(m)); // 确定m1和m2的大小相同
+    assert(same_size(m));   // 确定m1和m2的大小相同
 
-    Matrix res(*this); // 通过copy constructor赋值
+    Matrix res(*this);      // 通过copy constructor赋值
     res += m;
 
     return res;
@@ -158,6 +158,39 @@ operator*(const Matrix &m) {
 
     return res;
 }
+
+
+// // 矩阵相加(友元函数)
+// template<typename elemType>
+// Matrix<elemType>
+// operator+(const Matrix<elemType> &m1, const Matrix<elemType> &m2) {
+//     assert(m1.same_size(m2));   // 确定m1和m2的大小相同
+
+//     Matrix<elemType> res(m1);   // 通过copy constructor赋值
+//     res += m2;
+
+//     return res;
+// }
+
+
+// // 矩阵相乘(友元函数)
+// template<typename elemType>
+// Matrix<elemType> 
+// operator*(const Matrix<elemType> &m1, const Matrix<elemType> &m2) {
+//     assert(m1.comfortable(m2)); // m1的列数(col)必须等于m2的行数(row)
+
+//     Matrix<elemType> res(m1.rows(), m2.cols());
+
+//     for (uint i = 0; i < m1.rows(); i++) {
+//         for (uint j = 0; j < m1.cols(); j++) {
+//             res(i, j) = 0;
+//             for (uint k = 0; k < m1.cols(); k++)
+//                 res(i, j) += m1(i ,k) * m2(k ,j);
+//         }
+//     }
+
+//     return res;
+// }
 
 // 矩阵+=运算
 template<typename elemType>

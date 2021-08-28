@@ -430,6 +430,7 @@ bool correct_guess(user_profile *puser, unsigned int guess) {
         return true;
     return false;
 }
+
 void play_game(user_profile *puser) {
     bool next_seq = true;  // show next sequence?
     bool go_for_it = true; // user wants to guess?

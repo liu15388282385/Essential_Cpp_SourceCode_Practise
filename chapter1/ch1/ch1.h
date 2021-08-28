@@ -109,7 +109,6 @@ inline void bump_correct(user_profile *puser) {
 #include <cstdlib>
 /**
  * 随机选择一个数列进行游戏猜测;
- * @param ui
  * @return
  */
 inline num_sequence gen_seq_id() {

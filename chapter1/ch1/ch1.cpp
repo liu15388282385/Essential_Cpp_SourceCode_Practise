@@ -267,7 +267,7 @@ void file_out(user_profile *puser) { //todo: 完善把用户信息输出到文�
     fstream iofile("seq_data.txt", ios_base::in | ios_base::app); // 声明一个读写文件对象
 
     if (!iofile) {
-        // 由于某种原因，文件无法打开......
+        // no！！！由于某种原因，文件无法打开......
         cerr << "Oops! Unable to save session data!\n";
     }
     else {

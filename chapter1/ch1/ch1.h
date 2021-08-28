@@ -163,7 +163,8 @@ inline void trace(const string &where, int val1, int val2) {
 inline bool check_integrity(int pos) {
     const int max_elems = 512;
 
-    if (pos <= 0 || pos > max_elems) {
+    if (pos <= 0 || pos > max_elems) 
+    {
         cerr << "!! invalid position: " << pos
              << " Cannot honor request\n";
         return false;

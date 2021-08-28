@@ -259,9 +259,8 @@ void file_in(user_profile *puser) { // todo: 完善从文件读取用户信息
 
 /**
  * 写文件
- * @param puser
+ * @param puser 
  */
-
 void file_out(user_profile *puser) { //todo: 完善把用户信息输出到文件
     //    int num_tries = 0;
     //    int num_cor = 0;

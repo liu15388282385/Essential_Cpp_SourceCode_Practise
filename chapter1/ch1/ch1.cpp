@@ -208,7 +208,7 @@ void display_statistics(user_profile *puser) {
  * 读取文件;
  * @param puser
  */
-void file_in(user_profile *puser) {
+void file_in(user_profile *puser) { // todo: 完善从文件读取用户信息
     //    int num_tries = 0;
     //    int num_cor = 0;
     fstream iofile("seq_data.txt", ios_base::in | ios_base::app); //声明一个读写文件对象
@@ -262,7 +262,7 @@ void file_in(user_profile *puser) {
  * @param puser
  */
 
-void file_out(user_profile *puser) {
+void file_out(user_profile *puser) { //todo: 完善把用户信息输出到文件
     //    int num_tries = 0;
     //    int num_cor = 0;
     fstream iofile("seq_data.txt", ios_base::in | ios_base::app); // 声明一个读写文件对象
@@ -289,7 +289,6 @@ void file_out(user_profile *puser) {
         while (iofile >> name) {
             iofile >> nt >> nc >> ns;
             if (name == puser->name) {
-                //todo: 修改用户的猜测信息，并保存进文件
                 nt += puser->guesses;
                 nc += puser->correct;
                 ns = (static_cast<float>(nt) / static_cast<float>(nc)) * 100;

@@ -153,7 +153,7 @@ operator+=(const Matrix &m) {
 template<typename elemType>
 void Matrix<elemType>::
 operator*=(const Matrix &m) {
-    comfortable(m);     // m1的列数(cols)必须和m2的行数(rows)相同
+    comfortable(m); // m1的列数(cols)必须和m2的行数(rows)相同
 
     uint mat_size = cols() * rows();
 

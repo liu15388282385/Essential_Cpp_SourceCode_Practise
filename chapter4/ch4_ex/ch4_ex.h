@@ -190,7 +190,7 @@ inline void UserProfile::reset_level(const string &level) {
 }
 
 inline string UserProfile::guest_login() {
-    return {};
+    return "";
 }
 
 istream &operator>>(istream &is, UserProfile &rhs) {
@@ -236,12 +236,12 @@ public:
     void operator+=(const Matrix &);
 
     // 下标访问矩阵元素
-    elemType &operator()(int row, int column) {
-        return _matrix[row][column];
+    elemType &operator()(int row, int col) {
+        return _matrix[row][col];
     }
 
-    elemType operator()(int row, int column) const {
-        return _matrix[row][column];
+    elemType operator()(int row, int col) const {
+        return _matrix[row][col];
     }
 
     // 简化"转换至通用型矩阵(general matrix)"的过程
@@ -253,7 +253,7 @@ public:
     ostream &print(ostream &) const;
 
 private:
-    elemType _matrix[4][4]{};
+    elemType _matrix[4][4];
 };
 
 // 重载输出符号
@@ -337,5 +337,6 @@ extern void ex4_2();
 extern void ex4_3();
 extern void ex4_4();
 extern void ex4_5();
+
 
 #endif //CH4_CH4_EX_H

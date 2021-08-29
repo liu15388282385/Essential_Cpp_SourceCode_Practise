@@ -220,12 +220,14 @@ void Triangular::display(int length, int beg_pos, ostream &os) {
 }
 
 inline bool 
-Triangular_iterator::operator==(const Triangular_iterator &rhs) const {
+Triangular_iterator::
+operator==(const Triangular_iterator &rhs) const {
     return _index == rhs._index; // 判断2个Triangular类是否相等;
 }
 
 inline bool 
-Triangular_iterator::operator!=(const Triangular_iterator &rhs) const {
+Triangular_iterator::
+operator!=(const Triangular_iterator &rhs) const {
     return !(*this == rhs); // 使用重载过的==运算符的非运算;
 }
 

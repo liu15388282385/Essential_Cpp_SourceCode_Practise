@@ -126,12 +126,12 @@ inline double UserProfile::guess_average() const {
            : 0.0;
 }
 
-//构造函数，初始化数据
+// 构造函数，初始化数据
 inline UserProfile::UserProfile(string username, uLevel level)
         : _login(std::move(username)), _user_level(level),
           _times_logged(1), _guesses(0), _correct_guesses(0) {}
 
-//构造函数，处理默认的初始数据
+// 构造函数，处理默认的初始数据
 inline UserProfile::UserProfile()
         : _login("guest"), _user_level(Beginner),
           _times_logged(1), _guesses(0), _correct_guesses(0) {

@@ -217,11 +217,13 @@ void Triangular::display(int length, int beg_pos, ostream &os) {
         os << _elems[ix] << ' ';
 }
 
-inline bool Triangular_iterator::operator==(const Triangular_iterator &rhs) const {
+inline bool 
+Triangular_iterator::operator==(const Triangular_iterator &rhs) const {
     return _index == rhs._index; // 判断2个Triangular类是否相等;
 }
 
-inline bool Triangular_iterator::operator!=(const Triangular_iterator &rhs) const {
+inline bool 
+Triangular_iterator::operator!=(const Triangular_iterator &rhs) const {
     return !(*this == rhs); // 使用重载过的==运算符的非运算;
 }
 
@@ -230,7 +232,8 @@ class iterator_overflow { // 声明一个异常类
 };
 
 //检查下标是否合法
-inline void Triangular_iterator::check_integrity() const {
+inline void 
+Triangular_iterator::check_integrity() const {
     if (_index > Triangular::_max_elems)
         throw iterator_overflow(); // 抛出一个异常类iterator_overflow;
     if (_index > Triangular::_elems.size())
@@ -238,20 +241,23 @@ inline void Triangular_iterator::check_integrity() const {
 }
 
 //重载解引用
-inline int Triangular_iterator::operator*() const {
+inline int 
+Triangular_iterator::operator*() const {
     check_integrity();
     return Triangular::_elems[_index]; // 获取_index索引中的元素;
 }
 
 //重载自增运算符前置版
-inline Triangular_iterator &Triangular_iterator::operator++() {
+inline Triangular_iterator 
+&Triangular_iterator::operator++() {
     ++_index;
     check_integrity();
     return *this;
 }
 
 //重载自增运算符后置版
-inline const Triangular_iterator Triangular_iterator::operator++(int) {
+inline const Triangular_iterator 
+Triangular_iterator::operator++(int) {
     Triangular_iterator tmp = *this; // 存储先前值 
     ++_index;                        // 递增下标
     check_integrity();
@@ -274,7 +280,8 @@ private:
 };
 
 template<typename elemType>
-inline bool LessThan<elemType>::operator()( elemType _value) const {
+inline bool 
+LessThan<elemType>::operator()( elemType _value) const {
     return _value < _val;
 }
 

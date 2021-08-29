@@ -231,15 +231,33 @@ operator!=(const Triangular_iterator &rhs) const {
     return !(*this == rhs); // 使用重载过的==运算符的非运算;
 }
 
-class iterator_overflow { // 声明一个异常类
+// 迭代器溢出异常类
+class iterator_overflow { 
+public:
+    iterator_overflow(int index, int max) 
+            : _index(index), _max(max) {}
 
+    int index() { return _index; }
+    int max() {return _max; }
+
+    void what_happened(ostream &os = cerr)  {
+        os << "Internal error: current index"
+           << _index << " exceeds maximum bound: "
+           << _max;
+    }
+
+private:
+    int _index;
+    int _max;
 };
 
 //检查下标是否合法
 inline void 
 Triangular_iterator::check_integrity() const {
-    if (_index > Triangular::_max_elems)
-        throw iterator_overflow(); // 抛出一个异常类iterator_overflow;
+    if (_index > Triangular::_max_elems) {
+        iterator_overflow ex(_index, Triangular::_max_elems); // 抛出一个异常类iterator_overflow;
+        throw ex; // 明确抛出的异常对象
+    }
     if (_index > Triangular::_elems.size())
         Triangular::gen_elements(_index); // 添加元素到vector中直到长度大于等于_index;
 }

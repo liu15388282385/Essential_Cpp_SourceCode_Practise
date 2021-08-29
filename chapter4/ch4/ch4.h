@@ -111,14 +111,16 @@ istream &operator>>(istream &is, Triangular &rhs) {
     return is;
 }
 
-Triangular::Triangular(int len, int beg_pos) : _length(len > 0 ? len : 1), _beg_pos(beg_pos > 0 ? beg_pos : 1) {
+Triangular::Triangular(int len, int beg_pos) 
+: _length(len > 0 ? len : 1), _beg_pos(beg_pos > 0 ? beg_pos : 1) {
     _next = _beg_pos;
     int elem_cnt = _beg_pos + _length;
     if (_elems.size() < elem_cnt)
         gen_elements(elem_cnt);
 }
 
-Triangular::Triangular(const Triangular &rhs) : _length(rhs._length), _beg_pos(rhs._beg_pos), _next(rhs._beg_pos - 1) {
+Triangular::Triangular(const Triangular &rhs) 
+: _length(rhs._length), _beg_pos(rhs._beg_pos), _next(rhs._beg_pos - 1) {
 
 }
 

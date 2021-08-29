@@ -11,6 +11,8 @@ int main() {
     ex4_3();
     ex4_4();
     ex4_5();
+
+    return 0;
 }
 
 void ex4_1() {

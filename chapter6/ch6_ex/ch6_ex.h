@@ -90,7 +90,6 @@ class Matrix {
    friend Matrix<elemType> 
    operator*(const Matrix<elemType> &m1, const Matrix<elemType> &m2) {
         Matrix<elemType> res(m1);
-        m1.comfortable(m2); // m1的列数(cols)必须和m2的行数(rows)相同
         res *= m2;
         return res;
    }
@@ -154,6 +153,7 @@ operator+=(const Matrix &m) {
 template<typename elemType>
 void Matrix<elemType>::
 operator*=(const Matrix &m) {
+    comfortable(m);     // m1的列数(cols)必须和m2的行数(rows)相同
     uint mat_size = cols() * rows();
 
     for (uint i = 0; i < mat_size; i++)

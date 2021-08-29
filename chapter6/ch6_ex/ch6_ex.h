@@ -154,10 +154,20 @@ template<typename elemType>
 void Matrix<elemType>::
 operator*=(const Matrix &m) {
     comfortable(m);     // m1的列数(cols)必须和m2的行数(rows)相同
+
     uint mat_size = cols() * rows();
 
     for (uint i = 0; i < mat_size; i++)
         (*(_matrix + i)) *= (*(m._matrix + i));
+    
+    // Matrix<elemType> res(rows(), m.cols());
+    // for (uint i = 0; i < rows(); i++) {
+    //     for (uint j = 0; j < cols(); j++) {
+    //         res(i, j) = 0;
+    //         for (uint k = 0; k < cols(); j++)
+    //             res(i, j) += (*this)(i, k) * m(k, j); 
+    //     }
+    // }
     
 }
 

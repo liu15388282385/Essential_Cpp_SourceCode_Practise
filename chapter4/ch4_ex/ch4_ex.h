@@ -332,10 +332,10 @@ Matrix::Matrix(const elemType *array) {
 /********************
  * 测试函数
  ********************/
-void ex4_1();
-void ex4_2();
-void ex4_3();
-void ex4_4();
-void ex4_5();
+extern void ex4_1();
+extern void ex4_2();
+extern void ex4_3();
+extern void ex4_4();
+extern void ex4_5();
 
 #endif //CH4_CH4_EX_H

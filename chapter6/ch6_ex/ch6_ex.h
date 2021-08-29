@@ -150,6 +150,7 @@ operator+=(const Matrix &m) {
     
 }
 
+// 矩阵*=运算
 template<typename elemType>
 void Matrix<elemType>::
 operator*=(const Matrix &m) {

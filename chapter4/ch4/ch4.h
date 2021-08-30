@@ -251,33 +251,33 @@ private:
     int _max;
 };
 
-// example
-extern void log_message(const char*);
-extern string err_message[];
-extern ostream log_file;
+// // example
+// extern void log_message(const char*);
+// extern string err_message[];
+// extern ostream log_file;
 
-bool has_elem(Triangular_iterator first, 
-              Triangular_iterator last, int elem) {
+// bool has_elem(Triangular_iterator first, 
+//               Triangular_iterator last, int elem) {
 
-    bool status = true;
+//     bool status = true;
 
-    try {
-        while (first != last) {
-            if (*first == elem)
-                return status;
-            ++first;
-        }   
-    }
-    // try块内的程序代码执行时，如果有任何异常抛出，
-    // 我们之前捕获其中类型为iterator_overflow的异常
-    catch(iterator_overflow &iof) {
-        // log_message(iof.what_happened());
-        log_message("check if iterators address same container");
-    }
+//     try {
+//         while (first != last) {
+//             if (*first == elem)
+//                 return status;
+//             ++first;
+//         }   
+//     }
+//     // try块内的程序代码执行时，如果有任何异常抛出，
+//     // 我们之前捕获其中类型为iterator_overflow的异常
+//     catch(iterator_overflow &iof) {
+//         // log_message(iof.what_happened());
+//         log_message("check if iterators address same container");
+//     }
 
-    status = false;
-    return status;
-}
+//     status = false;
+//     return status;
+// }
 
 //检查下标是否合法
 inline void 

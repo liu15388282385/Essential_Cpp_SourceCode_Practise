@@ -79,6 +79,7 @@ typedef unsigned int uint; // 统一将int转为使用unsigned int
 
 template<typename elemType>
 class Matrix {
+    
    // 矩阵相加
    friend Matrix<elemType> 
    operator+(const Matrix<elemType> &m1, const Matrix<elemType> &m2) {

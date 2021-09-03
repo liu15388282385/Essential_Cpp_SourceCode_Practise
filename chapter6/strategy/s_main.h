@@ -57,8 +57,8 @@ protected:
     uint calc_pos(uint elem) const; 
 
     seq_type _ns;
-    unit _length;
-    unit _beg_pos;
+    unit _length{};
+    unit _beg_pos{};
     vector<uint> *_pelems;
     enum { _max_elems = 1024 };
 };

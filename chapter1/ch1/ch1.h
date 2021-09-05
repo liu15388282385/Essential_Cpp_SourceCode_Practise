@@ -34,15 +34,15 @@ enum num_sequence {
 };
 
 struct user_profile {
-    string name; //玩家名字;
-    int guesses; //玩家猜测次数;
-    int correct; //玩家猜测正确次数;
-    float score; //最终百分制分数
-    int level;   //玩家游戏等级;
+    string name;            //玩家名字;
+    int guesses;            //玩家猜测次数;
+    int correct;            //玩家猜测正确次数;
+    float score;            //最终百分制分数
+    int level;              //玩家游戏等级;
 
-    num_sequence cur_seq; //玩家猜测数列的类型;
-    pvec cur_seq_vec;     //存储玩家当前猜测数列的元素;
-    int pos;              //存储玩家当前猜测数列的随机一个元素位置;
+    num_sequence cur_seq;   //玩家猜测数列的类型;
+    pvec cur_seq_vec;       //存储玩家当前猜测数列的元素;
+    int pos;                //存储玩家当前猜测数列的随机一个元素位置;
 };
 
 // external structures

@@ -3,6 +3,4 @@ project(ch7)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_subdirectory(ch7)
-
-add_subdirectory(ch7_ex)
+add_executable(ch7 "ch7.cpp")

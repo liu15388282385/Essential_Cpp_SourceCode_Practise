@@ -8,8 +8,27 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <exception>
 
 using namespace std;
+
+class StackException : public logic_error {
+public:
+    explicit StackException(const char *unnamed, const char *what) : logic_error(unnamed), _what(what) {}
+    const char *what() const noexcept override { return _what.c_str(); }
+protected:
+    string _what;
+};
+
+class PopOnEmpty : public StackException {
+public:
+    PopOnEmpty() : StackException(nullptr, "Pop on Empty Stack!") {}
+};
+
+class PushOnFull : public StackException {
+public:
+    PushOnFull() : StackException(nullptr, "Push on Full Stack!") {}
+};
 
 typedef string elemType;
 
@@ -23,8 +42,8 @@ public:
     }
     virtual ~Stack() = default;
 
-    bool pop(elemType &);               // 返回栈顶元素并删除
-    bool push(const elemType &);        // 向栈中添加元素
+    void pop(elemType &);               // 返回栈顶元素并删除
+    void push(const elemType &);        // 向栈中添加元素
     virtual bool peek(int, elemType &) {// 返回栈顶元素不删除
         return false;
     } 
@@ -52,23 +71,26 @@ ostream &operator<<(ostream &os, const Stack &rhs) {
     return os;
 }
 
-inline bool Stack::
+inline void Stack::
 pop(elemType &elem) {
-    if (empty())
-            return false;
+    if (empty()) {
+        throw PopOnEmpty();
+//        return false;
+    }
     elem = _stack[--_top];
     _stack.pop_back();
-    return true;
+    // return true;
 }
 
-inline bool Stack::
+inline void Stack::
 push(const elemType &elem) {
     if (!full()) {
         _stack.push_back(elem);
         ++_top;
-        return true;
+        return;
     }
-    return false;
+    throw PushOnFull();
+//    return false;
 }
 
 inline void Stack::

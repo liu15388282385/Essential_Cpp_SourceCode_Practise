@@ -45,8 +45,8 @@ void ex5_2() {
 
     cout << "Please enter a series of strings.\n";
 
-   while (cin >> str && !st.full())
-    // while (cin >> str && st.size() < 5)
+  while (cin >> str && !st.full())
+    //  while (cin >> str && st.size() < 5)
         st.push(str);
 
     cout << endl
@@ -57,8 +57,23 @@ void ex5_2() {
     PeekBack_Stack pst;
     while (!st.empty()) {
         string t;
-        if (st.pop(t))
+        // fixme: try-catch语句待已完善
+        try {
+            try {
+                st.pop(t);
+            }
+            catch (const PopOnEmpty &poe) {
+            clog << poe.what() << endl;
+            }
             pst.push(t);
+        }
+        catch (const PushOnFull &pof) {
+        // catch (const StackException &ske) {
+        // catch (const logic_error &lge) {
+        // catch (const exception &ex) {
+            clog << pof.what();
+            return;
+        }
     }
 
     cout << "About to call peek() with PeekBack_Stack" << endl;

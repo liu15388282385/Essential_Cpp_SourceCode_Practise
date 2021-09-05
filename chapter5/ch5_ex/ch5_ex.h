@@ -132,37 +132,7 @@ class PeekBack_Stack : public Stack {
 public:
     explicit PeekBack_Stack(int capacity = 0) : Stack(capacity) {}
     
-    // int size() const override { return _stack.size(); }
-    // int top() const override { return  _top; }
-    // bool empty() const override { return  !_top; }
-    // bool full() const override { return size() > _stack.max_size(); }
-    
-    // bool pop(elemType &elem) override {
-    //     if (empty())
-    //         return false;
-    //     elem = _stack[--_top];
-    //     _stack.pop_back();
-    //     return true;
-    // }
-    // bool push(const elemType &elem) override {
-    //     if (!full()) {
-    //         _stack.push_back(elem);
-    //         ++_top;
-    //         return true;
-    //     }
-    //     return false;
-    // }
-    
     bool peek(int index, elemType &elem) override ;
-    
-    // void print(ostream &os) const override {
-    //     auto rit = _stack.rbegin(),
-    //     rend = _stack.rend();
-    //     os <<"\n\t";
-    //     while (rit != rend)
-    //         os << *rit++ << "\n\t";
-    //     os << endl;
-    // }
     
 };
 

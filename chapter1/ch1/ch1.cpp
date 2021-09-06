@@ -261,7 +261,7 @@ void file_in(user_profile *puser) { // todo: 完善从文件读取用户信息
  * 写文件
  * @param puser 
  */
-void file_out(user_profile *puser) { //todo: 完善把用户信息输出到文件
+void file_out(user_profile *puser) { 
     //    int num_tries = 0;
     //    int num_cor = 0;
     fstream iofile("seq_data.txt", ios_base::in | ios_base::app); // 声明一个读写文件对象
@@ -287,6 +287,7 @@ void file_out(user_profile *puser) { //todo: 完善把用户信息输出到文�
         float ns;
         while (iofile >> name) {
             iofile >> nt >> nc >> ns;
+            // fixme: 把用户的猜测信息写入文件
             if (name == puser->name) {
                 nt += puser->guesses;
                 nc += puser->correct;
@@ -294,7 +295,6 @@ void file_out(user_profile *puser) { //todo: 完善把用户信息输出到文�
                 return;
             }
             else {
-                //把用户的猜测信息写入文件
                 iofile << setw(10) << setfill(' ') << puser->name
                        << setw(5) << setfill(' ') << puser->guesses
                        << setw(5) << setfill(' ') << puser->correct

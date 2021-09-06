@@ -264,7 +264,7 @@ void file_in(user_profile *puser) { // todo: 完善从文件读取用户信息
 void file_out(user_profile *puser) { 
     //    int num_tries = 0;
     //    int num_cor = 0;
-    fstream iofile("seq_data.txt", ios_base::in | ios_base::app); // 声明一个读写文件对象
+    fstream iofile("seq_data.txt", ios_base::out | ios_base::app); // 声明一个读写文件对象
 
     if (!iofile) {
         // no！！！由于某种原因，文件无法打开......
@@ -296,9 +296,9 @@ void file_out(user_profile *puser) {
             }
             else {
                 iofile << setw(10) << setfill(' ') << puser->name
-                       << setw(5) << setfill(' ') << puser->guesses
-                       << setw(5) << setfill(' ') << puser->correct
-                       << setw(5) << setfill(' ') << puser->score << endl;
+                       << setw(5)  << setfill(' ') << puser->guesses
+                       << setw(5)  << setfill(' ') << puser->correct
+                       << setw(5)  << setfill(' ') << puser->score  << endl;
             }
         }
     }

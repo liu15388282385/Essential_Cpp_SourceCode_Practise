@@ -19,7 +19,6 @@ int main() {
 	BinaryTree<int> bt1( ivec );
 
 	log1 << "\npreorder traversal: \n";
-    // cout << should see\n\t ";
 	bt1.preorder(log1);
 
 	bt1.clear();

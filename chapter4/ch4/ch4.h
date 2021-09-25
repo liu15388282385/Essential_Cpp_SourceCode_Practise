@@ -99,7 +99,7 @@ ostream &operator<<(ostream &os, const Triangular &rhs) {
     return os;
 }
 
-//重载cin运算符，输出Triangular对象
+//重载cin运算符，输入Triangular对象
 istream &operator>>(istream &is, Triangular &rhs) {
     char ch1, ch2;  
     int bp, len;

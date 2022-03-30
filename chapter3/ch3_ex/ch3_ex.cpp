@@ -5,10 +5,10 @@
 #include "ch3_ex.h"
 
 int main() {
-//    ex3_1();
-//    ex3_2();
-//    ex3_3();
-//    ex3_4();
+    ex3_1();
+    ex3_2();
+    ex3_3();
+    ex3_4();
     ex_filter();
     return 0;
 }

@@ -1,5 +1,5 @@
 #最低版本
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.23)
 #项目名称
 project(ch1)
 #语言标准

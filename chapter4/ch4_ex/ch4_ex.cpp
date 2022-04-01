@@ -20,8 +20,8 @@ void ex4_1() {
     string str;
 
     cout << "Please enter a series of strings.\n";
-//    while (cin >> str && !st.full())
-//        st.push(str);
+    while (cin >> str && !st.full())
+        st.push(str);
     fill_stack(st);
 
     if (st.empty()) {

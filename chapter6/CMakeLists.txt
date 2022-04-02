@@ -8,6 +8,6 @@ add_subdirectory(ch6)
 
 add_subdirectory(ch6_ex)
 
-add_subdirectory(binaryTree)
+add_subdirectory(ch6_btree)
 
-add_subdirectory(strategy)
+add_subdirectory(ch6_strategy)

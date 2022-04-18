@@ -25,9 +25,9 @@ static int ia[int_size] = {1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144};
 //double da[double_size] = { 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0 };
 static string sa[string_size] = {"pooh", "piglet", "eeyore", "tigger"}; /* NOLINT */
 
-static vector<int> ivec(ia, ia + int_size); /* NOLINT */
+static vector<int> ivec{1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144}; /* NOLINT */
 //vector<double> dvec( da, da + double_size ); /* NOLINT */
-static vector<string> svec(sa, sa + string_size); /* NOLINT */
+static vector<string> svec{"pooh", "piglet", "eeyore", "tigger"}; /* NOLINT */
 
 //定义cout字体颜色
 #define RESET  "\033[0m"  /* Reset */

@@ -11,19 +11,19 @@ int main () {
         LibMat libMat;
         print(libMat);
     }
-    cout << "===========================================\n";
+    cout << "\n===========================================\n";
     {
         cout << YELLOW << "\nCreating a Book object to print()\n" << RESET;
         Book b("The Castle", "Franz Kafka");
         print(b);
     }
-    cout << "===========================================\n";
+    cout << "\n===========================================\n";
     {
         cout << YELLOW << "\nCreating a AudioBook object to print()\n" << RESET;
         AudioBook ab("Man Without Qualities", "Robert Musil", "Kenneth Meyer");
         print(ab);
     }
-    cout << "===========================================\n";
+    cout << "\n===========================================\n";
     {
         cout << YELLOW << "\nCreating a Magazine object to print()\n" << RESET;
         Magazine mag("SCI");
